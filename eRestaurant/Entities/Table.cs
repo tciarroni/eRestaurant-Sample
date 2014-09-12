@@ -15,5 +15,9 @@ namespace eRestaurant.Entities
         public bool Smoking { get; set; }
         public int Capacity { get; set; }
         public bool Available { get; set; }
+
+        #region Navigation Properties
+        public virtual ICollection<Reservation> Reservations { get; set; }
+        #endregion
     }
 }

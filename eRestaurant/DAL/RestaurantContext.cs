@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using eRestaurant.Entities;
 
 namespace eRestaurant.DAL
 {
-    public class RestaurantContext : DBContext
+    public class RestaurantContext : DbContext
     {
         #region Constructor
         public RestaurantContext() : base("name-EatIn") { }
@@ -17,6 +18,21 @@ namespace eRestaurant.DAL
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Table> Tables { get;set;}
         public DbSet<SpecialEvent> SpecialEvents { get; set; }
+        #endregion
+        #region Over-ride OnModelCreating
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<Reservation>().HasMany(r => r.Tables)
+                .WithMany(t => t.Reservations)
+                .Map(mapping =>
+                    {
+                        mapping.ToTable("ReservationTables");
+                        mapping.MapLeftKey("ReservationID");
+                        mapping.MapRightKey("TableID");
+                    });
+            base.OnModelCreating(modelBuilder);
+        }
         #endregion
     }
 }
