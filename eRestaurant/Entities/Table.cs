@@ -8,6 +8,12 @@ namespace eRestaurant.Entities
 {
     public class Table
     {
+
+         public Table()
+        {
+            Available = true;
+        }
+
         // in EF, by convention if therre is a property with the same name as the class but with the sufix ID then EF will assume that this 
         // property is mapping to a primary key column on the database table.
         public int TableID { get; set; }

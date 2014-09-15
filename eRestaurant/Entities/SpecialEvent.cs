@@ -9,6 +9,13 @@ namespace eRestaurant.Entities
 {
     public class SpecialEvent
     {
+
+         public SpecialEvent()
+        {
+            Active = true;
+        }
+
+
         [Key] // identifies the property as mapping to a primary key
         public string EventCode { get; set; }
         public string Description { get; set; }

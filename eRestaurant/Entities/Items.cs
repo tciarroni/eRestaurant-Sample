@@ -8,6 +8,11 @@ namespace eRestaurant.Entities
 {
     public class Items
     {
+        public Items()
+        {
+            Active = true;
+        }
+
         public int ItemID { get; set; }
         public string Description { get; set; }
         public decimal CurrentPrice { get; set; }

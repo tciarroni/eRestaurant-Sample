@@ -26,6 +26,7 @@ namespace eRestaurant.Entities
         Range(0.01, 30, ErrorMessage = "Unit Cost must be between 0.01 and $30.00 inclusive")]
         public decimal UnitCost { get; set; }
         public string Notes { get; set; }
+
         // navigation properties should be declared as virtual
         public virtual Bills Bill { get; set; }
         public virtual Items Item { get; set; }
